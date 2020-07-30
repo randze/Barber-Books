@@ -4,7 +4,12 @@
   "description": "## Components Calendar Scheduling form \\_ Show available slots and booked slots (each specified by a vendor-determined Date datatype)      \\_ Filters by date selected in calendar \\_ Name, email, phone, time",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"  
   },
   "repository": {
     "type": "git",
