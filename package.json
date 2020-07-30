@@ -9,7 +9,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"  
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/randze/scheduler/issues"
   },
-  "homepage": "https://github.com/randze/scheduler#readme"
+  "homepage": "https://github.com/randze/scheduler#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.26"
+  }
 }
