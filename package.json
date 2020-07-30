@@ -1,28 +1,26 @@
 {
   "name": "scheduler",
   "version": "1.0.0",
-  "description": "## Components Calendar Scheduling form \\_ Show available slots and booked slots (each specified by a vendor-determined Date datatype)      \\_ Filters by date selected in calendar \\_ Name, email, phone, time",
-  "main": "index.js",
+  "description": "project 3",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/randze/scheduler.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/randze/scheduler/issues"
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   },
-  "homepage": "https://github.com/randze/scheduler#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.26"
+    "express": "^4.16.3",
+    "if-env": "^1.0.4"
   }
 }
