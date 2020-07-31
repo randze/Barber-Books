@@ -19,7 +19,7 @@ import 'rc-time-picker/assets/index.css'
 
 
 const now = moment()
-const format = 'YYYY-MM-DD HH:mm a'
+const format = 'YYYY-MM-DD hh:mm a'
 function getFormat(time) {
   return time ? format : 'YYYY-MM-DD'
 }
@@ -59,7 +59,7 @@ function disabledDate(current) {
   return current.valueOf() < date.valueOf();  // can not select days before today
 }
 
-// diagnostic console log functions 
+// value retrieval
 function onStandaloneSelect(value) {
   console.log('onStandaloneSelect');
   console.log(value && value.format(format));
@@ -80,7 +80,22 @@ function App() {
           <Route path='/about'><VendorScheduler /></Route>
           <Route path='/'><Login /></Route>
         </Switch>
-        <Calendar
+        <Calendar id='vendorCalendar'
+          showWeekNumber={false}
+          locale={enUS}
+          defaultValue={now}
+          disabledTime={disabledTime}
+          showToday
+          format={getFormat(true)}
+          showOk={false}
+          timePicker={timePickerElement}
+          onChange={onStandaloneChange}
+          disabledDate={disabledDate}
+          onSelect={onStandaloneSelect}
+          renderFooter={(mode) => (<span>{mode} extra footer</span>)}
+        />
+
+        <Calendar id='userCalendar'
           showWeekNumber={false}
           locale={enUS}
           defaultValue={now}
