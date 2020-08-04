@@ -29,6 +29,7 @@ const timePickerElement = <TimePickerPanel
   defaultValue={moment('00:00', 'HH:mm a')}
   showSecond={false}
   use12Hours
+  minuteStep={30}
 />
 
 // functions handling disabling dates and times
@@ -80,21 +81,6 @@ function App() {
           <Route path='/about'><VendorScheduler /></Route>
           <Route path='/'><Login /></Route>
         </Switch>
-        <Calendar id='vendorCalendar'
-          showWeekNumber={false}
-          locale={enUS}
-          defaultValue={now}
-          disabledTime={disabledTime}
-          showToday
-          format={getFormat(true)}
-          showOk={false}
-          timePicker={timePickerElement}
-          onChange={onStandaloneChange}
-          disabledDate={disabledDate}
-          onSelect={onStandaloneSelect}
-          renderFooter={(mode) => (<span>{mode} extra footer</span>)}
-        />
-
         <Calendar id='userCalendar'
           showWeekNumber={false}
           locale={enUS}
@@ -109,6 +95,8 @@ function App() {
           onSelect={onStandaloneSelect}
           renderFooter={(mode) => (<span>{mode} extra footer</span>)}
         />
+
+
       </div>
     </div>
   );
