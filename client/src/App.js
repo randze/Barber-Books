@@ -15,7 +15,6 @@ import enUS from 'rc-calendar/lib/locale/en_US'
 // css
 import 'rc-calendar/assets/index.css'
 import 'rc-time-picker/assets/index.css'
-
 // temp timeslot data
 import timeslotdata from './timeslot-data.json'
 import Timeslots from './components/Timeslots'
