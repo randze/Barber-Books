@@ -4,20 +4,10 @@ const appointments = require("../models/appointments");
 
 module.exports = function(app) {
 
-    // // Route for retrieving users
-    // app.get("/api/user", async (req, res) => {
-    //     const userList = await db.User.find({}).populate('users')
-    //     db.Appointments.populate
-    //    res.json(userList)
-    // })
-
-// Route for retrieving a Product by id and populating it's Review.
+// Route for retrieving users
 app.get("/api/user", async (req, res) => {
-    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-    // db.User.populate('users')
-    const userList = await db.User.find({}).populate('users')
+    const userList = await db.User.find({__v: '0'}, {name: 1, email: 1, phone: 1, _id:0}).populate('appointments','time -_id')
       .then(function(appointments) {
-        // If we were able to successfully find an Product with the given id, send it back to the client
         res.json(appointments);
       })
       .catch(function(err) {
