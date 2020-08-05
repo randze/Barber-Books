@@ -21,17 +21,14 @@ import Timeslots from './components/Timeslots'
 
 
 function App() {
-  const submitForm = (event) => {
-    event.preventDefault()
 
-  }
   return (
     <div className="container">
       <NavLink exact to='/' activeClassName={'focusNavLink'}>Home</NavLink>
       <NavLink to='/book' activeClassName={'focusNavLink'}>Book Appointment</NavLink>
       <div>
         <Switch> {/*more specific paths first*/}
-          <Route path='/book'><UserScheduler submitForm={submitForm} /></Route>
+          <Route path='/book'><UserScheduler /></Route>
           <Route exact path='/'><Login /></Route>
         </Switch>
       </div>

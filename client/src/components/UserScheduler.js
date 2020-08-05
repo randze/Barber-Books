@@ -116,21 +116,31 @@ function UserScheduler(props) {
     // When the form is submitted, use the API.saveBook method to save the book data
     // Then reload books from the database
     function handleFormSubmit(event) {
-        event.preventDefault();
-        if (formObject.title && formObject.author) {
+        event.preventDefault()
+
+        let hasBlank = false
+        for (let key in formObject) {
+            if (formObject[key] === "") {
+                hasBlank = true
+            }
+        }
+        if (!hasBlank) {
+
             API.saveBook({
-                title: formObject.title,
-                author: formObject.author,
-                synopsis: formObject.synopsis
+                name: formObject.name,
+                email: formObject.email,
+                phone: formObject.phone,
+                appointment: formObject.appointment
             })
                 .then(() => setFormObject({
-                    title: "",
-                    author: "",
-                    synopsis: ""
+                    name: "",
+                    email: "",
+                    phone: "",
+                    appointment: ''
                 }))
                 .then(() => loadBooks())
                 .catch(err => console.log(err));
-        }
+        } else { console.log('else') }
     };
 
     return (
@@ -172,7 +182,7 @@ function UserScheduler(props) {
                         </Form.Group>
 
 
-                        <Button variant="primary" type="submit" onClick={props.submitForm}>
+                        <Button variant="primary" type="submit" onClick={handleFormSubmit}>
                             Submit
                     </Button>
                     </Form>
