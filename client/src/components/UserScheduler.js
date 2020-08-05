@@ -1,7 +1,9 @@
 // react essentials
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
+//API
+import API from "../utils/API"
 
 // calendar and time picker
 import Calendar from 'rc-calendar'
@@ -11,7 +13,6 @@ import enUS from 'rc-calendar/lib/locale/en_US'
 // css
 import 'rc-calendar/assets/index.css'
 import 'rc-time-picker/assets/index.css'
-
 
 const now = moment()
 const format = 'YYYY-MM-DD hh:mm a'
@@ -75,10 +76,63 @@ function onStandaloneChange(value) {
     console.log(value && value.format(format));
 }
 
-function UserScheduler() {
-    let [slot, setSlot] = useState('')
+function UserScheduler(props) {
+    // Setting our component's initial state
+    const [books, setBooks] = useState([])
+    let [formObject, setFormObject] = useState({ name: '', email: '', phone: '', appointment: '' })
 
-    const selectDateTime = (value) => { setSlot(value.format(format)) }
+    const selectDateTime = (value) => { setFormObject({ ...formObject, appointment: value.format(format) }) }
+
+
+
+
+    // Load all books and store them with setBooks
+    useEffect(() => {
+        loadBooks()
+    }, [])
+
+    // Loads all books and sets them to books
+    function loadBooks() {
+        API.getBooks()
+            .then(res =>
+                setBooks(res.data)
+            )
+            .catch(err => console.log(err));
+    };
+
+    // Deletes a book from the database with a given id, then reloads books from the db
+    function deleteBook(id) {
+        API.deleteBook(id)
+            .then(res => loadBooks())
+            .catch(err => console.log(err));
+    }
+
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({ ...formObject, [name]: value })
+    };
+
+    // When the form is submitted, use the API.saveBook method to save the book data
+    // Then reload books from the database
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (formObject.title && formObject.author) {
+            API.saveBook({
+                title: formObject.title,
+                author: formObject.author,
+                synopsis: formObject.synopsis
+            })
+                .then(() => setFormObject({
+                    title: "",
+                    author: "",
+                    synopsis: ""
+                }))
+                .then(() => loadBooks())
+                .catch(err => console.log(err));
+        }
+    };
+
     return (
         <>
             <Row>
@@ -102,19 +156,23 @@ function UserScheduler() {
                     <Form>
                         <Form.Group controlId="formName">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="name" placeholder="" />
+                            <Form.Control type="text" placeholder="" name='name' value={formObject.name} onChange={handleInputChange} />
                         </Form.Group>
                         <Form.Group controlId="formEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="text" placeholder="" />
+                            <Form.Control type="text" placeholder="" name='email' value={formObject.email} onChange={handleInputChange} />
+                        </Form.Group>
+                        <Form.Group controlId="formPhone">
+                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Control type="text" placeholder="" name='phone' value={formObject.phone} onChange={handleInputChange} />
                         </Form.Group>
                         <Form.Group controlId="formDate">
                             <Form.Label>Date</Form.Label>
-                            <Form.Control type="text" placeholder="" value={slot} readOnly />
+                            <Form.Control type="text" placeholder="Select date and time from calendar" name='appointment' value={formObject.appointment} readOnly />
                         </Form.Group>
 
 
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" onClick={props.submitForm}>
                             Submit
                     </Button>
                     </Form>
