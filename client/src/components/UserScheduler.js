@@ -1,6 +1,6 @@
 // react essentials
 import React, { useState, useRef, useEffect } from 'react';
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link, Redirect } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 //API
 import API from "../utils/API"
@@ -29,39 +29,7 @@ const timePickerElement = <TimePickerPanel
     hideDisabledOptions={true}
 />
 
-// functions handling disabling dates and times
-function disabledTime(date) {
-    let takenTimes = []
-    if (date && [0, 6].includes(date.day())) {
 
-        return {
-            disabledHours() {
-                return [...[...Array(10).keys()], ...[...Array(4).keys()].map(item => 23 - item)] // unavailable hours after and before midnight
-            },
-        };
-    }
-    if (date && takenTimes.includes(date.valueOf())) {
-        return
-    }
-    return {
-        disabledHours() {
-            return [...[...Array(8).keys()], ...[...Array(2).keys()].map(item => 23 - item)]
-        },
-    };
-}
-
-
-function disabledDate(current) {
-    if (!current) {
-        // allow empty select
-        return false;
-    }
-    const date = moment();
-    date.hour(0);
-    date.minute(0);
-    date.second(0);
-    return current.valueOf() < date.valueOf()  // can not select days before today
-}
 
 // value retrieval
 function onStandaloneSelect(value) {
@@ -83,29 +51,25 @@ function UserScheduler(props) {
 
     const selectDateTime = (value) => { setFormObject({ ...formObject, time: value.format(format) }) }
 
-
-
-
-    // Load all books and store them with setBooks
+    // Load all appointments and store them with setBooks (first load)
     useEffect(() => {
         loadBooks()
     }, [])
 
-    // Loads all books and sets them to books
-    function loadBooks() {
-        API.getBooks()
-            .then(res =>
-                setBooks(res.data)
-            )
-            .catch(err => console.log(err));
+    // Loads all appointments and sets them to books
+    async function loadBooks() {
+        try {
+            let result = await API.getBooks()
+            setBooks(result.data)
+        } catch (err) { console.log(err) }
     };
 
-    // Deletes a book from the database with a given id, then reloads books from the db
-    function deleteBook(id) {
-        API.deleteBook(id)
-            .then(res => loadBooks())
-            .catch(err => console.log(err));
-    }
+    // // Deletes an appointment from the database with a given id, then reloads appointment from the db
+    // function deleteBook(id) {
+    //     API.deleteBook(id)
+    //         .then(res => loadBooks())
+    //         .catch(err => console.log(err));
+    // }
 
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -113,9 +77,9 @@ function UserScheduler(props) {
         setFormObject({ ...formObject, [name]: value })
     };
 
-    // When the form is submitted, use the API.saveBook method to save the book data
+    // When the form is submitted, use the API.saveBook method to save the appointment data
     // Then reload books from the database
-    function handleFormSubmit(event) {
+    async function handleFormSubmit(event) {
         event.preventDefault()
 
         let hasBlank = false
@@ -125,29 +89,85 @@ function UserScheduler(props) {
             }
         }
         if (!hasBlank) {
-
-            API.saveBook({
-                name: formObject.name,
-                email: formObject.email,
-                phone: formObject.phone,
-                time: formObject.time
-            })
-                .then(() => setFormObject({
+            try {
+                await API.saveBook({
+                    name: formObject.name,
+                    email: formObject.email,
+                    phone: formObject.phone,
+                    time: formObject.time
+                })
+                setFormObject({
                     name: "",
                     email: "",
                     phone: "",
                     time: ''
-                }))
-                .then(() => loadBooks())
-                .catch(err => console.log(err));
+                })
+                await loadBooks()
+            } catch (err) { console.log(err) }
         } else { console.log('else') }
+        console.log('a')
+
     };
+
+    // functions handling disabling dates and times
+    let unavailable = books.map(item => moment(item.time, 'YYYY-MM-DDThh:mm:ss.SSSZ'))
+    console.log(unavailable[0] ? unavailable[0].date() : '')
+    let unavailDateTime = []
+    unavailable.forEach(item => unavailDateTime.push({ year: item.year(), month: item.month(), date: item.date(), hour: item.hour(), minute: item.minute() }))
+    console.log('hi', unavailDateTime)
+
+    function disabledTime(date) {
+        let takenHours = []
+        let takenMinutes = []
+
+        // if (unavailable[0] && date.date())
+        if (date && [0, 6].includes(date.day())) { //weekend hours
+            takenHours = [...takenHours, ...[...Array(10).keys()], ...[...Array(4).keys()].map(item => 23 - item)]
+
+        } else {
+            takenHours = [...takenHours, ...[...Array(8).keys()], ...[...Array(2).keys()].map(item => 23 - item)]
+        }
+
+
+        return {
+            disabledHours() {
+                // for (let i = 0; i < unavailDateTime.length; i++) {
+                //     if (date.year() === unavailDateTime[i].year && date.month() === unavailDateTime[i].month && date.date() === unavailDateTime[i].date && h === unavailDateTime[i].hour) {
+                //         takenHours.push(unavailDateTime[i].minute) 
+                //     }
+                // }
+                return takenHours
+            },
+            disabledMinutes(h) {
+
+                for (let i = 0; i < unavailDateTime.length; i++) {
+                    if (date.year() === unavailDateTime[i].year && date.month() === unavailDateTime[i].month && date.date() === unavailDateTime[i].date && h === unavailDateTime[i].hour) {
+                        takenMinutes.push(unavailDateTime[i].minute)
+                    }
+                }
+                return takenMinutes
+            }
+        }
+    }
+
+
+    function disabledDate(current) {
+        if (!current) {
+            // allow empty select
+            return false;
+        }
+        const date = moment();
+        date.hour(0);
+        date.minute(0);
+        date.second(0);
+        return current.valueOf() < date.valueOf()  // can not select days before today
+    }
 
     return (
         <>
-            <Row>
+            <Row id='mainForm'>
                 <Col md='auto'>
-                    <Calendar id='userCalendar'
+                    <Calendar className="mx-auto" id='userCalendar'
                         showWeekNumber={false}
                         locale={enUS}
                         defaultValue={now}
