@@ -3,36 +3,41 @@ const { User } = require("../models");
 const appointments = require("../models/appointments");
 
 module.exports = function(app) {
-    app.get("/api/user", async (req, res) => {
-        const userList = await db.User.find({}).populate('users')
-        
-       res.json(userList)
-    })
-        
+
+    // // Route for retrieving users
+    // app.get("/api/user", async (req, res) => {
+    //     const userList = await db.User.find({}).populate('users')
+    //     db.Appointments.populate
+    //    res.json(userList)
+    // })
+
+// Route for retrieving a Product by id and populating it's Review.
+app.get("/api/user", async (req, res) => {
+    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+    // db.User.populate('users')
+    const userList = await db.User.find({}).populate('users')
+      .then(function(appointments) {
+        // If we were able to successfully find an Product with the given id, send it back to the client
+        res.json(appointments);
+      })
+      .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+      });
+  });
+
+    // Route for retrieving appointments
     app.get("/api/appointments", (req, res) => {
         db.Appointments.find({}, function (err, appointments){
             if(err){
                 res.send("Something went wrong!");
                 next();
             }
-            res.json(appointment);
+            res.json(appointments);
         });
     })
-
-    app.post("/api/user", async (req, res) => {
-        const data = req.body
-        console.log( 'post data: ',data )
-        await db.User.create( data )
-        res.send({ status: true, message: "Successfully added appointment" })
-    });
-
-    app.post("/api/appointments", (req, res) => {
-        Appointments.find()
-            .then(data => res.status(200).json(data))
-            .catch(err => res.status(404).json(err))
-    });
-
-    app.post('/api/user/test', async function (req, res) {
+    
+    app.post('/api/user', async function (req, res) {
         console.log(`[POST] /appointments, body:`, req.body)
         try {
             // first create a new user if not already exists
