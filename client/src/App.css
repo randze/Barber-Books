@@ -41,3 +41,28 @@
 	color: #fff;
 	background-color: #252525;
 }
+
+.login-bg:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: auto;
+	height: 100%;
+	background-color: #202020;
+}
+
+.myLogin {
+}
+
+.min-height-100 {
+	min-height: 100vh;
+}
+
+@media only screen and (max-width: 576px) {
+	.login-bg {
+		display: none;
+	}
+}

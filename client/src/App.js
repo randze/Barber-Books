@@ -22,14 +22,16 @@ import Timeslots from './components/Timeslots'
 
 function App() {
 	return (
-		<div className="container">
-			<NavLink exact to="/" activeClassName={'focusNavLink'}>
-				Home
-			</NavLink>
-			<NavLink to="/book" activeClassName={'focusNavLink'}>
-				Book Appointment
-			</NavLink>
-			<div>
+		<>
+			<div className="container">
+				<NavLink exact to="/" activeClassName={'focusNavLink'}>
+					Home
+				</NavLink>
+				<NavLink to="/book" activeClassName={'focusNavLink'}>
+					Book Appointment
+				</NavLink>
+			</div>
+			<div className="container">
 				<Switch>
 					{' '}
 					{/*more specific paths first*/}
@@ -41,7 +43,7 @@ function App() {
 					</Route>
 				</Switch>
 			</div>
-		</div>
+		</>
 	)
 }
 
