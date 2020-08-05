@@ -1,17 +1,23 @@
 const db = require("../models");
+const { User } = require("../models");
+const appointments = require("../models/appointments");
 
 module.exports = function(app) {
-    app.get("/api/user", (req, res) => {
-        User.find()
-            .then(data => res.status(200).json(data))
-            .catch(err => res.status(404).json(err))
-    });
-
+    app.get("/api/user", async (req, res) => {
+        const userList = await db.User.find({}).populate('users')
+        
+       res.json(userList)
+    })
+        
     app.get("/api/appointments", (req, res) => {
-        Appointments.find()
-            .then(data => res.status(200).json(data))
-            .catch(err => res.status(404).json(err))
-    });
+        db.Appointments.find({}, function (err, appointments){
+            if(err){
+                res.send("Something went wrong!");
+                next();
+            }
+            res.json(appointment);
+        });
+    })
 
     app.post("/api/user", async (req, res) => {
         const data = req.body
@@ -67,4 +73,3 @@ module.exports = function(app) {
         }
     })
 }
-
