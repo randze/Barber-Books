@@ -79,9 +79,9 @@ function onStandaloneChange(value) {
 function UserScheduler(props) {
     // Setting our component's initial state
     const [books, setBooks] = useState([])
-    let [formObject, setFormObject] = useState({ name: '', email: '', phone: '', appointment: '' })
+    let [formObject, setFormObject] = useState({ name: '', email: '', phone: '', time: '' })
 
-    const selectDateTime = (value) => { setFormObject({ ...formObject, appointment: value.format(format) }) }
+    const selectDateTime = (value) => { setFormObject({ ...formObject, time: value.format(format) }) }
 
 
 
@@ -130,13 +130,13 @@ function UserScheduler(props) {
                 name: formObject.name,
                 email: formObject.email,
                 phone: formObject.phone,
-                appointment: formObject.appointment
+                time: formObject.time
             })
                 .then(() => setFormObject({
                     name: "",
                     email: "",
                     phone: "",
-                    appointment: ''
+                    time: ''
                 }))
                 .then(() => loadBooks())
                 .catch(err => console.log(err));
@@ -178,7 +178,7 @@ function UserScheduler(props) {
                         </Form.Group>
                         <Form.Group controlId="formDate">
                             <Form.Label>Date</Form.Label>
-                            <Form.Control type="text" placeholder="Select date and time from calendar" name='appointment' value={formObject.appointment} readOnly />
+                            <Form.Control type="text" placeholder="Select date and time from calendar" name='time' value={formObject.time} readOnly />
                         </Form.Group>
 
 
