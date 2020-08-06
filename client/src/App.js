@@ -7,7 +7,7 @@ import Home from './components/Home'
 import UserScheduler from './components/UserScheduler'
 import VendorScheduler from './components/VendorScheduler'
 import Login from './components/Login'
-import Signup from './components/Signup'
+import StaffSignup from './components/StaffSignup'
 import slots from './slots'
 // calendar and time picker
 import Calendar from 'rc-calendar'
@@ -24,7 +24,7 @@ import Timeslots from './components/Timeslots'
 function App() {
 	return (
 		<>
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 				<NavLink exact to="/" activeClassName={'focusNavLink'}>
 					Home
 				</NavLink>
@@ -49,7 +49,7 @@ function App() {
 						<Login />
 					</Route>
 					<Route path="/signup">
-						<Signup />
+						<StaffSignup />
 					</Route>
 					<Route exact path="/">
 						<Home />
