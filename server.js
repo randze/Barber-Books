@@ -12,13 +12,13 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-const expressSession = require('express-session')({
-	secret: 'secret',
-	resave: false,
-	saveUninitialized: false,
-})
+// const expressSession = require('express-session')({
+// 	secret: 'secret',
+// 	resave: false,
+// 	saveUninitialized: false,
+// })
 
-app.use(expressSession)
+// app.use(expressSession)
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
@@ -43,8 +43,8 @@ require('./routes/apiRoutes')(app)
 require('./routes/htmlRoutes')(app)
 
 // passport setup
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 // app listener
 app.listen(PORT, function () {

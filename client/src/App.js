@@ -10,7 +10,9 @@ import Footer from './components/Footer'
 import ListAppointments from './components/ListAppointments'
 import Login from './components/Login'
 import Home from './components/Home'
+import CheckAuth from './components/CheckAuth'
 import slots from './slots'
+import StaffSignup from './components/StaffSignup'
 // calendar and time picker
 import Calendar from 'rc-calendar'
 import moment from 'moment'
@@ -43,6 +45,15 @@ function App() {
 						</Route>
 						<Route path="/list">
 							<ListAppointments />
+						</Route>
+						<Route exact path="/signup">
+							<StaffSignup />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/check">
+							<CheckAuth />
 						</Route>
 						<Route exact path="/">
 							<Home />

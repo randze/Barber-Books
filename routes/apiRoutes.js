@@ -76,4 +76,20 @@ module.exports = function (app) {
 			})
 		}
 	})
+	app.post('/staff/signup', async function (req, res) {
+		await db.Staff.create({
+			email: req.body.email,
+			password: req.body.password,
+		})
+
+		res.send('complete')
+	})
+	app.post('/staff/login', async function (req, res) {
+		const data = await db.Staff.find({
+			email: req.body.email,
+			password: req.body.password,
+		})
+		console.log('login data: ', data)
+		res.send(data)
+	})
 }

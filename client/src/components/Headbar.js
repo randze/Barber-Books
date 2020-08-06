@@ -31,8 +31,18 @@ function Headbar() {
 					>
 						Book Appointment
 					</NavLink>
-					<NavLink to="/list" activeClassName={'focusNavLink'}>
+					<NavLink
+						to="/list"
+						activeClassName={'focusNavLink'}
+						style={{ marginRight: 10 }}
+					>
 						List Appointments
+					</NavLink>
+					<NavLink to="/signup" activeClassName={'focusNavLink'}>
+						Signup
+					</NavLink>
+					<NavLink to="/login" activeClassName={'focusNavLink'}>
+						Login
 					</NavLink>
 				</Nav>
 			</Navbar.Collapse>
