@@ -4,7 +4,8 @@ import './App.css';
 import { Switch, Route, NavLink } from 'react-router-dom'
 // components
 import UserScheduler from './components/UserScheduler'
-import VendorScheduler from './components/VendorScheduler'
+import Headbar from './components/Headbar'
+import ListAppointments from './components/ListAppointments'
 import Login from './components/Login'
 import slots from './slots'
 // calendar and time picker
@@ -19,20 +20,26 @@ import 'rc-time-picker/assets/index.css'
 import timeslotdata from './timeslot-data.json'
 import Timeslots from './components/Timeslots'
 
+// bootstrap
+import { Form, Button, Row, Col } from 'react-bootstrap'
 
 function App() {
 
   return (
-    <div className="container">
-      <NavLink exact to='/' activeClassName={'focusNavLink'}>Home</NavLink>
-      <NavLink to='/book' activeClassName={'focusNavLink'}>Book Appointment</NavLink>
-      <div>
-        <Switch> {/*more specific paths first*/}
-          <Route path='/book'><UserScheduler /></Route>
-          <Route exact path='/'><Login /></Route>
-        </Switch>
+    <>
+      <Headbar />
+      <div className="container">
+
+        <div>
+          <Switch> {/*more specific paths first*/}
+            <Route path='/book'><UserScheduler /></Route>
+            <Route path='/list'><ListAppointments /></Route>
+            <Route exact path='/'><Login /></Route>
+
+          </Switch>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

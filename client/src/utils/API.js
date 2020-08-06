@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  // Gets all appointments
+  // Gets just appointment times
   getBooks: function () {
     return axios.get("/api/appointments");
   },
@@ -16,5 +16,9 @@ export default {
   // Saves an appointment to the database
   saveBook: function (bookData) {
     return axios.post("/api/user", bookData);
+  },
+  // Get info on bookings
+  getInfo: function () {
+    return axios.get("/api/user");
   }
 };
