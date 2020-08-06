@@ -1,6 +1,6 @@
 // react essentials
-import React from 'react';
-import './App.css';
+import React from 'react'
+import './App.css'
 import { Switch, Route, NavLink } from 'react-router-dom'
 // components
 import UserScheduler from './components/UserScheduler'
@@ -23,24 +23,32 @@ import Timeslots from './components/Timeslots'
 // bootstrap
 import { Form, Button, Row, Col } from 'react-bootstrap'
 
+// fonts
+import './fonts/cooper_black.ttf'
+
 function App() {
-
-  return (
-    <>
-      <Headbar />
-      <div className="container">
-
-        <div>
-          <Switch> {/*more specific paths first*/}
-            <Route path='/book'><UserScheduler /></Route>
-            <Route path='/list'><ListAppointments /></Route>
-            <Route exact path='/'><Login /></Route>
-
-          </Switch>
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<Headbar />
+			<div className="container">
+				<div>
+					<Switch>
+						{' '}
+						{/*more specific paths first*/}
+						<Route path="/book">
+							<UserScheduler />
+						</Route>
+						<Route path="/list">
+							<ListAppointments />
+						</Route>
+						<Route exact path="/">
+							<Login />
+						</Route>
+					</Switch>
+				</div>
+			</div>
+		</>
+	)
 }
 
-export default App;
+export default App
