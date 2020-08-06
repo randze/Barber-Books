@@ -1,10 +1,12 @@
 // react essentials
 import React from 'react'
+import ReactFullpage from '@fullpage/react-fullpage'
 import './App.css'
 import { Switch, Route, NavLink } from 'react-router-dom'
 // components
 import UserScheduler from './components/UserScheduler'
 import Headbar from './components/Headbar'
+import Footer from './components/Footer'
 import ListAppointments from './components/ListAppointments'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -48,6 +50,7 @@ function App() {
 					</Switch>
 				</div>
 			</div>
+			<Footer />
 		</>
 	)
 }
