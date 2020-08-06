@@ -1,20 +1,20 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all appointments
   getBooks: function () {
-    return axios.get("/api/books");
+    return axios.get("/api/appointments");
   },
-  // Gets the book with the given id
+  // Gets the appointment with the given id
   getBook: function (id) {
     return axios.get("/api/books/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the appointment with the given id
   deleteBook: function (id) {
     return axios.delete("/api/books/" + id);
   },
-  // Saves a book to the database
+  // Saves an appointment to the database
   saveBook: function (bookData) {
-    return axios.post("/api/user/test", bookData);
+    return axios.post("/api/user", bookData);
   }
 };
