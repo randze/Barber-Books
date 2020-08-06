@@ -7,6 +7,7 @@ import UserScheduler from './components/UserScheduler'
 import Headbar from './components/Headbar'
 import ListAppointments from './components/ListAppointments'
 import Login from './components/Login'
+import Home from './components/Home'
 import slots from './slots'
 // calendar and time picker
 import Calendar from 'rc-calendar'
@@ -42,7 +43,7 @@ function App() {
 							<ListAppointments />
 						</Route>
 						<Route exact path="/">
-							<Login />
+							<Home />
 						</Route>
 					</Switch>
 				</div>
