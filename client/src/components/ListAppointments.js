@@ -26,7 +26,7 @@ function ListAppointments(props) {
     let renderTime = item => moment(item, 'YYYY-MM-DDThh:mm:ss.SSSZ').format('dddd, MMMM Do YYYY, h:mm a')
     console.log(info[1] ? renderTime(info[1].appointments[0].time) : '')
     return (<>
-        <Table>
+        <Table responsive>
             <thead>
                 <tr>
                     <th>Name</th>
