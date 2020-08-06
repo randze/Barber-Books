@@ -118,6 +118,25 @@ footer {
 	left: 0;
 }
 
+#mainForm {
+	margin-bottom: 75px;
+}
+
+.card a {
+	color: #000;
+	text-decoration: none;
+	background-color: transparent;
+	font-weight: bold;
+}
+
+.card {
+	margin-bottom: 5px;
+}
+
+.card-title {
+	font-family: 'Cooper Black';
+}
+
 @media only screen and (min-width: 992px) {
 	.homeButton {
 		display: none;
