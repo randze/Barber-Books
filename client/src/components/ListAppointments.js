@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 import API from "../utils/API"
 
+import moment from 'moment'
+
 import { Table } from 'react-bootstrap'
+
+const format = 'YYYY-MM-DD hh:mm a'
 
 function ListAppointments(props) {
     let [info, setInfo] = useState([])
@@ -18,7 +22,9 @@ function ListAppointments(props) {
             setInfo(result.data)
         } catch (err) { console.log(err) }
     };
-    console.log(info)
+
+    let renderTime = item => moment(item, 'YYYY-MM-DDThh:mm:ss.SSSZ').format('dddd, MMMM Do YYYY, h:mm a')
+    console.log(info[1] ? renderTime(info[1].appointments[0].time) : '')
     return (<>
         <Table>
             <thead>
@@ -35,7 +41,9 @@ function ListAppointments(props) {
                         <td>{item.name}</td>
                         <td>{item.email}</td>
                         <td>{item.phone}</td>
-                        <td>appointments</td>
+                        <td><ul>{item.appointments[0] ? item.appointments.map(jtem =>
+                            <li>{renderTime(jtem.time)}</li>
+                        ) : 'None'}</ul></td>
                     </tr>
                 )}
             </tbody>
