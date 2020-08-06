@@ -3,9 +3,11 @@ import React from 'react'
 import './App.css'
 import { Switch, Route, NavLink } from 'react-router-dom'
 // components
+import Home from './components/Home'
 import UserScheduler from './components/UserScheduler'
 import VendorScheduler from './components/VendorScheduler'
 import Login from './components/Login'
+import Signup from './components/Signup'
 import slots from './slots'
 // calendar and time picker
 import Calendar from 'rc-calendar'
@@ -22,14 +24,20 @@ import Timeslots from './components/Timeslots'
 function App() {
 	return (
 		<>
-			<div className="container">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<NavLink exact to="/" activeClassName={'focusNavLink'}>
 					Home
 				</NavLink>
 				<NavLink to="/book" activeClassName={'focusNavLink'}>
 					Book Appointment
 				</NavLink>
-			</div>
+				<NavLink to="/login" activeClassName={'focusNavLink'}>
+					Login
+				</NavLink>
+				<NavLink to="/signup" activeClassName={'focusNavLink'}>
+					Signup
+				</NavLink>
+			</nav>
 			<div className="container">
 				<Switch>
 					{' '}
@@ -37,8 +45,14 @@ function App() {
 					<Route path="/book">
 						<UserScheduler />
 					</Route>
-					<Route exact path="/">
+					<Route path="/login">
 						<Login />
+					</Route>
+					<Route path="/signup">
+						<Signup />
+					</Route>
+					<Route exact path="/">
+						<Home />
 					</Route>
 				</Switch>
 			</div>

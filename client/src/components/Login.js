@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react'
 
-function Login(props) {
+function Login() {
 	const [userData, setUserData] = useState({
 		name: '',
 		email: localStorage.email,
 		password: '',
 		rememberMe: true,
 	})
+
 	const inputEmail = useRef()
 	const inputPassword = useRef()
 
@@ -21,19 +22,8 @@ function Login(props) {
 	}
 
 	function loginComplete(loginData) {
-		dispatch({ do: 'setMessage', type: 'success', message: loginData.message })
-		delete loginData.message
-
 		// save the active session
 		localStorage.session = loginData.session
-
-		// remember the user session + data
-		dispatch({ do: 'setUserData', data: loginData })
-
-		setTimeout(function () {
-			dispatch({ do: 'clearMessage' })
-			dispatch({ do: 'loginState', loggedIn: true })
-		}, 3000)
 	}
 
 	async function loginUser(event) {
@@ -41,34 +31,13 @@ function Login(props) {
 
 		if (userData.email === '') {
 			inputEmail.focus()
-			dispatch({
-				do: 'setMessage',
-				type: 'danger',
-				message: 'Please enter your email!',
-			})
 			return
 		}
 
 		if (userData.password === '' || userData.password.length < 8) {
 			inputPassword.current.focus()
-			dispatch({
-				do: 'setMessage',
-				type: 'danger',
-				message: 'Please enter your password!',
-			})
 			return
 		}
-
-		const apiResult = await API.post('/api/user/login', userData)
-
-		if (apiResult.error) {
-			dispatch({ do: 'setMessage', type: 'danger', message: apiResult.error })
-			// clear any session
-			localStorage.session = ''
-			return
-		}
-
-		loginComplete(apiResult)
 	}
 
 	return (
