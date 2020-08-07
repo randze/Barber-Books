@@ -2,57 +2,45 @@
 
 # Barber Books
 
-1. [Description](#toc-desc)
+1. [Description](#Description)
 
-2. [Installation](#toc-install)
+2. [Installation](#Installation)
 
-3. [Usage](#toc-usage)
+3. [Usage](#Usage)
 
-4. [License](#toc-license)
+4. [Future Development](#Future-Development)
 
-5. [Contributing](#toc-contrib)
+5. [License](#License)
 
-6. [Tests](#toc-tests)
+6. [Contributing](#Contributing)
 
-7. [Questions](#toc-contact)
-
-<a id='toc-desc'></a>
+7. [Questions](#Questions)
 
 ## Description
 
 Barber Books is an online tool that can help barbers and clients have a quick and efficient way to manage and create bookings for haircuts.
 
-<a id='toc-install'></a>
-
 ## Installation
 
 No installation required
-
-<a id='toc-usage'></a>
 
 ## Usage
 
 Use the app at --------. Use the navbar to navigate between the landing page, scheduler, and appointment list. Fill in and submit the form in the scheduler to make an appointment.
 
-<a id='toc-license'></a>
+## Future Development
+
+- Adding staff login page
+- Update/remove appointments
+- Improve appointment UI
 
 ## License
 
 [MIT](LICENSE)
 
-<a id='toc-contrib'></a>
-
 ## Contributing
 
 Submit a pull request and the repository owner will review your changes.
-
-<a id='toc-tests'></a>
-
-## Tests
-
-No tests.
-
-<a id='toc-contact'></a>
 
 ## Questions
 
