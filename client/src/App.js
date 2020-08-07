@@ -37,7 +37,7 @@ function App() {
 						<Home />
 					</Route>
 					<Route path="*">
-						<NoMatch />
+						<Home />
 					</Route>
 				</Switch>
 			</Container>
