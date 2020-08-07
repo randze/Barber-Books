@@ -1,24 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-const path = require('path')
-const db = require('./models')
-
-const passport = require('passport')
-
 const PORT = process.env.PORT || 8080
 const app = express()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-const expressSession = require('express-session')({
-	secret: 'secret',
-	resave: false,
-	saveUninitialized: false,
-})
-
-app.use(expressSession)
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
@@ -41,10 +28,6 @@ mongoose.connect(
 // app routes
 require('./routes/apiRoutes')(app)
 require('./routes/htmlRoutes')(app)
-
-// passport setup
-app.use(passport.initialize())
-app.use(passport.session())
 
 // app listener
 app.listen(PORT, function () {

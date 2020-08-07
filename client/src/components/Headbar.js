@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import { Nav, Form, Button, Row, Col, Navbar } from 'react-bootstrap'
+import { Nav, Navbar } from 'react-bootstrap'
 
 // imgs
 import logo from '../imgs/barber.png'

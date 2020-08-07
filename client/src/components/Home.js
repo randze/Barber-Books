@@ -1,8 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Jumbotron, Container, Card, Row, Col } from 'react-bootstrap'
-
-import bg from '../imgs/bg.jpg'
 
 function Home() {
 	return (
@@ -51,8 +48,7 @@ function Home() {
 								<Card.Title>Patrick Kuo</Card.Title>
 								<Card.Subtitle className="mb-2 text-muted">Web Developer</Card.Subtitle>
 								<Card.Text>
-									Some quick example text to build on the card title and make up the bulk of the
-									card's content.
+									Lorem Ipsum is simply dummy text of the printing and typesetting industry. FTW !
 								</Card.Text>
 								<Card.Link href="https://github.com/randze" target="_blank">
 									<p>
@@ -85,7 +81,3 @@ function Home() {
 }
 
 export default Home
-
-{
-	/* <img style={{ maxWidth: '100%' }} src={bg} alt="" /> */
-}
