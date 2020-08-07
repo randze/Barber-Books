@@ -32,6 +32,8 @@ Try the app now at [BarberBooks@Heroku](https://barber-books.herokuapp.com/) !
 
 Use the navbar to navigate between the landing page, scheduler, and appointment list. Fill in and submit the form in the scheduler to make an appointment.
 
+![SS](https://github.com/randze/Barber-Books/blob/master/img/app.gif)
+
 ## Future Development
 
 - Adding staff login page
