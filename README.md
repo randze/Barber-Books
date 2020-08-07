@@ -1,5 +1,7 @@
 ![Forks](https://img.shields.io/github/forks/randze/Barber-Books) ![Stars](https://img.shields.io/github/stars/randze/Barber-Books) ![License](https://img.shields.io/github/license/randze/Barber-Books)
 
+![SS](https://github.com/randze/Barber-Books/blob/master/img/app.jpg)
+
 # Barber Books
 
 1. [Description](#Description)
@@ -26,13 +28,16 @@ No installation required
 
 ## Usage
 
-Use the app at --------. Use the navbar to navigate between the landing page, scheduler, and appointment list. Fill in and submit the form in the scheduler to make an appointment.
+Try the app now at [BarberBooks@Heroku](https://barber-books.herokuapp.com/) !
+
+Use the navbar to navigate between the landing page, scheduler, and appointment list. Fill in and submit the form in the scheduler to make an appointment.
 
 ## Future Development
 
 - Adding staff login page
-- Update/remove appointments
-- Improve appointment UI
+- Ability to update/remove appointments
+- Sorted & filtered appointment list
+- General UI improvements
 
 ## License
 
