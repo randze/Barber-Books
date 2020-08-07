@@ -12,7 +12,7 @@ function Headbar() {
 		<Navbar expand="lg">
 			<Navbar.Brand href="#home">
 				{' '}
-				<NavLink exact to="/" activeClassName={'focusNavLink'}>
+				<NavLink to="/" activeClassName={'focusNavLink'}>
 					<img className="mb-3" width={50} height={50} src={logo} alt="" />
 					BarberBooks
 					<img className="mb-3" width={50} height={50} src={logo} alt="" />
@@ -21,7 +21,7 @@ function Headbar() {
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
-					<NavLink className="homeButton" exact to="/" activeClassName={'focusNavLink'}>
+					<NavLink className="homeButton" to="/" activeClassName={'focusNavLink'}>
 						Home
 					</NavLink>
 					<NavLink
