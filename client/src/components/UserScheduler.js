@@ -39,7 +39,7 @@ const timePickerElement = (
 // }
 
 function onStandaloneChange(value) {
-	console.log('onStandaloneChange')
+	// console.log('onStandaloneChange')
 	console.log(value && value.format(format))
 }
 
@@ -124,7 +124,7 @@ function UserScheduler(props) {
 	let unavailable = books.map((item) =>
 		moment(item.time, 'YYYY-MM-DDThh:mm:ss.SSSZ')
 	)
-	console.log(unavailable[0] ? unavailable[0].date() : '')
+	// console.log(unavailable[0] ? unavailable[0].date() : '')
 	let unavailDateTime = []
 	unavailable.forEach((item) =>
 		unavailDateTime.push({
@@ -135,7 +135,7 @@ function UserScheduler(props) {
 			minute: item.minute(),
 		})
 	)
-	console.log('hi', unavailDateTime)
+	// console.log('hi', unavailDateTime)
 
 	function disabledTime(date) {
 		let takenHours = []
