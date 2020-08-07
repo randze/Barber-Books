@@ -39,6 +39,8 @@ Use the navbar to navigate between the landing page, scheduler, and appointment 
 - Adding staff login page
 - Ability to update/remove appointments
 - Sorted & filtered appointment list
+- Allow for cancelling a booking
+- Allow the user to choose the person cutting their hair
 - General UI improvements
 
 ## License
