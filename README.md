@@ -22,6 +22,8 @@
 
 Barber Books is an online tool that can help barbers and clients have a quick and efficient way to manage and create bookings for haircuts.
 
+Barber Books is a new online appointment booking system for barbers. It’s all of your barbers needs under one roof, for you and your clients. Whether you’re searching to get a fresh new fade or looking to clean up your pompadour, Barber Books is a great way to book and schedule hair appointments with your favourite barber. No more wasting time trying to coordinate a day to come in, simply open the app and find all the information you need in one place. Create your account today on Barber Books! 
+
 ## Installation
 
 No installation required
