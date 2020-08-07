@@ -6,20 +6,21 @@ function Home() {
 		<div>
 			<Jumbotron fluid className="ourJumbo">
 				<Container>
-					<h1>Book your next appointment now!</h1>
-					<p>Welcome to Barber Books, your home for booking your next haircut.</p>
+					<h1>Book your next appointment now !</h1>
+					<br />
+					<h6>Welcome to Barber Books, your home for booking your next haircut.</h6>
 				</Container>
 			</Jumbotron>
 			<Container>
-				<h1>Why use Barber Books?</h1>
+				<h2>Why use Barber Books?</h2>
 				<p>
 					We’ve created Barber Books, an online tool that can help barbers and clients
 					have a quick and efficient way to manage and create bookings for haircuts.
 				</p>
 			</Container>
 
-			<Container style={{ minHeight: '400px' }}>
-				<h1>Brought to you by: </h1>
+			<Container style={{ minHeight: '500px' }}>
+				<h3>Brought to you by: </h3>
 				<Row>
 					<Col sm={12} md={4}>
 						<Card>

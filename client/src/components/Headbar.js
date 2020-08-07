@@ -12,7 +12,7 @@ function Headbar() {
 		<Navbar expand="lg">
 			<Navbar.Brand href="#home">
 				{' '}
-				<NavLink to="/" activeClassName={'focusNavLink'}>
+				<NavLink className="ourTitle" to="/" activeClassName={'focusNavLink'}>
 					<img className="mb-3" width={50} height={50} src={logo} alt="" />
 					BarberBooks
 					<img className="mb-3" width={50} height={50} src={logo} alt="" />
@@ -22,17 +22,17 @@ function Headbar() {
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<NavLink className="homeButton" to="/" activeClassName={'focusNavLink'}>
-						Home
+						<i className="fas fa-home"></i> Home
 					</NavLink>
 					<NavLink
 						to="/book"
 						activeClassName={'focusNavLink'}
 						style={{ marginRight: 10 }}
 					>
-						Book Appointment
+						<i className="fas fa-book"></i> Book Now
 					</NavLink>
 					<NavLink to="/list" activeClassName={'focusNavLink'}>
-						List Appointments
+						<i className="fas fa-clipboard-list"></i> Appointments
 					</NavLink>
 				</Nav>
 			</Navbar.Collapse>

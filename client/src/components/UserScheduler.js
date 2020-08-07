@@ -217,6 +217,16 @@ function UserScheduler(props) {
 				</Col>
 				<Col>
 					<Form>
+						<Form.Group controlId="formDate">
+							<Form.Label>Date</Form.Label>
+							<Form.Control
+								type="text"
+								placeholder="Select date and time from calendar"
+								name="time"
+								value={formObject.time}
+								readOnly
+							/>
+						</Form.Group>
 						<Form.Group controlId="formName">
 							<Form.Label>Name</Form.Label>
 							<Form.Control
@@ -245,16 +255,6 @@ function UserScheduler(props) {
 								name="phone"
 								value={formObject.phone}
 								onChange={handleInputChange}
-							/>
-						</Form.Group>
-						<Form.Group controlId="formDate">
-							<Form.Label>Date</Form.Label>
-							<Form.Control
-								type="text"
-								placeholder="Select date and time from calendar"
-								name="time"
-								value={formObject.time}
-								readOnly
 							/>
 						</Form.Group>
 

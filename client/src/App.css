@@ -67,6 +67,7 @@
 .navbar {
 	background-color: #101010;
 	margin-bottom: 15px;
+	border-bottom: solid 5px #202020;
 }
 /* background-color: #6e3d00; */
 .focusNavLink {
@@ -103,6 +104,10 @@ a:hover {
 	color: #fff;
 	background-image: url('./imgs/bg.jpg');
 	min-height: 320px;
+	border-top: solid 1px black;
+	border-left: solid 1px black;
+	border-bottom: solid 7px black;
+	border-right: solid 5px black;
 }
 
 footer {
@@ -132,10 +137,17 @@ footer {
 
 .card {
 	margin-bottom: 5px;
+	border-bottom: solid 7px black;
+	border-right: solid 5px black;
+	border-radius: 5%;
 }
 
 .card-title {
 	font-family: 'Cooper Black';
+}
+
+.ourTitle {
+	font-size: 1.4rem;
 }
 
 @media only screen and (min-width: 992px) {
