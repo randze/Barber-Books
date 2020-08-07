@@ -1,8 +1,8 @@
 ![Forks](https://img.shields.io/github/forks/randze/Barber-Books) ![Stars](https://img.shields.io/github/stars/randze/Barber-Books) ![License](https://img.shields.io/github/license/randze/Barber-Books)
 
-![SS](https://github.com/randze/Barber-Books/blob/master/img/app.jpg)
-
 # Barber Books
+
+![SS](https://github.com/randze/Barber-Books/blob/master/img/app.jpg)
 
 1. [Description](#Description)
 
